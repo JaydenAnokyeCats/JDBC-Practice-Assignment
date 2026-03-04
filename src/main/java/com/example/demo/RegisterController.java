@@ -18,11 +18,11 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button submit;
+    private Button submitButton;
 
     @FXML
     public void register(ActionEvent event) throws SQLException {
-        Window owner = submit.getScene().getWindow();
+        Window owner = submitButton.getScene().getWindow();
 
         System.out.println(usernameField.getText());
         System.out.println(emailField.getText());
