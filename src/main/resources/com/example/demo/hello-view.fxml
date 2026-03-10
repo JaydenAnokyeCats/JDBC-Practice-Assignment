@@ -4,9 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:controller="com.example.demo.RegisterController"
-            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.RegisterController">
    <Label layoutX="119.0" layoutY="139.0" text="Username">
       <font>
          <Font size="15.0" />
@@ -27,9 +25,11 @@
          <Font size="22.0" />
       </font>
    </Label>
-   <Button fx:id="submitButton" layoutX="274.0" layoutY="307.0" mnemonicParsing="false"
-           onAction="#register" prefHeight="25.0" prefWidth="76.0" text="Submit" />
+   <Button fx:id="submitButton" layoutX="144.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" prefHeight="25.0" prefWidth="84.0" text="Submit" />
    <TextField fx:id="usernameField" layoutX="221.0" layoutY="137.0" prefHeight="25.0" prefWidth="235.0" />
    <TextField fx:id="emailField" layoutX="221.0" layoutY="190.0" prefHeight="25.0" prefWidth="235.0" />
    <PasswordField fx:id="passwordField" layoutX="220.0" layoutY="248.0" prefHeight="25.0" prefWidth="235.0" />
+   <Button fx:id="displayInfo" layoutX="388.0" layoutY="307.0" mnemonicParsing="false" onAction="#display" prefHeight="25.0" prefWidth="91.0" text="Display Form" />
+   <TextField fx:id="passwordFieldAppear" editable="false" layoutX="220.0" layoutY="248.0" prefHeight="25.0" prefWidth="235.0" visible="false" />
+   <Button fx:id="revealButton" layoutX="479.0" layoutY="248.0" mnemonicParsing="false" onAction="#onClick" prefHeight="25.0" prefWidth="67.0" text="View" />
 </AnchorPane>

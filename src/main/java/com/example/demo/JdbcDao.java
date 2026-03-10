@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import  java.sql.SQLException;
+import javafx.event.ActionEvent;
+
+import java.sql.*;
 
 public class JdbcDao {
 
@@ -32,6 +31,32 @@ public class JdbcDao {
         }
     }
 
+    public void display() throws SQLException {
+        String SELECT_QUERY = "SELECT * FROM registration_info";
+
+        try (Connection connection = DriverManager.getConnection
+                (DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+
+             Statement statement = connection.createStatement();
+
+             ResultSet resultSet = statement.executeQuery(SELECT_QUERY)) {
+
+            System.out.println("Current Registered People:");
+
+            while (resultSet.next()) {
+                long id = resultSet.getLong("idregistration_info");
+                String name = resultSet.getString("full_name");
+                String email = resultSet.getString("email_id");
+                String password = resultSet.getString("password");
+
+                System.out.println(
+                        "ID: " + id +
+                                " | Name: " + name +
+                                " | Email: " + email +
+                                " | Password: " + password);
+            }
+        }
+    }
     public static void printSQLException(SQLException ex){
         for(Throwable e:ex){
             if(e instanceof SQLException){

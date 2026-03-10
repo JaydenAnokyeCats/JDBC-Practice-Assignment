@@ -8,6 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Window;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class RegisterController {
@@ -18,8 +20,35 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
     @FXML
+    private TextField passwordFieldAppear;
+    @FXML
     private Button submitButton;
+    @FXML
+    private Button revealButton;
+    boolean visible = false;
 
+    @FXML
+    public void display(ActionEvent event) throws SQLException {
+        try{
+            JdbcDao jdbcDao = new JdbcDao();
+            jdbcDao.display();
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onClick(ActionEvent event){
+        if (visible){
+            visible = false;
+            passwordFieldAppear.setVisible(false);
+        }else{
+            visible = true;
+            passwordFieldAppear.setVisible(true);
+            passwordField;
+        }
+
+    }
     @FXML
     public void register(ActionEvent event) throws SQLException {
         Window owner = submitButton.getScene().getWindow();
@@ -29,12 +58,15 @@ public class RegisterController {
         System.out.println(passwordField.getText());
         if (usernameField.getText().isEmpty()){
             showAlert(Alert.AlertType.ERROR, owner, "Error! (Null Name)", "Please enter your name.");
+            return;
         }
         if (emailField.getText().isEmpty()){
             showAlert(Alert.AlertType.ERROR, owner, "Error! (Null Email)", "Please enter your email address.");
+            return;
         }
         if (passwordField.getText().isEmpty()){
             showAlert(Alert.AlertType.ERROR, owner, "Error (Null Password)!", "Please enter a password!");
+            return;
         }
 
         String fullName = usernameField.getText();
@@ -53,4 +85,5 @@ public class RegisterController {
         alert.initOwner(owner);
         alert.show();
     }
+
 }
