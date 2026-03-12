@@ -41,11 +41,13 @@ public class RegisterController {
     public void onClick(ActionEvent event){
         if (visible){
             visible = false;
+            passwordFieldAppear.setText("");
             passwordFieldAppear.setVisible(false);
         }else{
             visible = true;
+            String pass = passwordField.getText();
+            passwordFieldAppear.setText(pass);
             passwordFieldAppear.setVisible(true);
-            passwordField;
         }
 
     }
